@@ -1,0 +1,116 @@
+{% load static %}
+
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" data-target="slide-out" class="sidenav-trigger left">
+      <i class="material-icons">menu</i>
+    </a>
+    <!-- Main Logo -->
+    <a href="{% url 'home' %}" class="brand-logo hide-on-small-only">
+      &nbsp;&nbsp;Home Manager
+    </a>
+    <!-- Mobile Logo -->
+    <a href="{% url 'home' %}" class="brand-logo hide-on-med-and-up">
+      Home Manager
+    </a>
+
+    <ul class="right hide-on-med-and-down">
+      <li>
+        <a href="{% url 'about' %}"> About </a>
+      </li>
+      {% if user.is_authenticated %}
+      <li>
+        <a class="dropdown-trigger" href="#!" data-target="tasks-dropdown">
+          Tasks
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+
+      <li>
+        <a class="dropdown-trigger" href="#!" data-target="plants-dropdown">
+          Plants
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+
+      <li>
+        <a class="dropdown-trigger" href="#!" data-target="bills-dropdown">
+          Bills
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+
+      <li>
+        <a class="dropdown-trigger" href="#!" data-target="shopping-dropdown">
+          Shopping
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+
+      <li>
+        <a class="dropdown-trigger" href="#!" data-target="notes-dropdown">
+          Notes
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">Log Out</a>
+      </li>
+      {% else %}
+      <li>
+        <a href="{% url 'login' %}">Log In</a>
+      </li>
+      <li>
+        <a href="{% url 'signup' %}">Sign Up</a>
+      </li>
+
+      {% endif %}
+    </ul>
+  </div>
+
+  <!--    Dropdown Content      -->
+  <ul id="tasks-dropdown" class="dropdown-content">
+    <li>
+      <a href="#!">View Tasks</a>
+    </li>
+    <li>
+      <a href="#!">Add Task</a>
+    </li>
+  </ul>
+
+  <ul id="plants-dropdown" class="dropdown-content">
+    <li>
+      <a href="{% url 'plants_index' %}">View Plants</a>
+    </li>
+    <li>
+      <a href="{% url 'plants_create' %}">Add Plant</a>
+    </li>
+  </ul>
+
+  <ul id="bills-dropdown" class="dropdown-content">
+    <li>
+      <a href="#!">View Bills</a>
+    </li>
+    <li>
+      <a href="#!">Add Bill</a>
+    </li>
+  </ul>
+
+  <ul id="shopping-dropdown" class="dropdown-content">
+    <li>
+      <a href="#!">View Shopping List</a>
+    </li>
+    <li>
+      <a href="#!">Add Item</a>
+    </li>
+  </ul>
+
+  <ul id="notes-dropdown" class="dropdown-content">
+    <li>
+      <a href="{% url 'notes_index' %}">View Notes</a>
+    </li>
+    <li>
+      <a href="{% url 'notes_create' %}">Add Note</a>
+    </li>
+  </ul>
+</nav>

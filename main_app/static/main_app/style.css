@@ -1,0 +1,35 @@
+body {
+  /* background-color: #d9b310; */
+  /* #0b3c5d */
+  /* #d9b310 */
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+nav {
+  background-color: #1d2731;
+}
+
+footer.page-footer {
+  background-color: #1d2731;
+  padding-top: 0;
+  text-align: right;
+}
+
+.vertical-align-middle {
+  line-height: normal;
+  display: inline;
+  vertical-align: middle;
+}
+
+.divider-margin-0 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+

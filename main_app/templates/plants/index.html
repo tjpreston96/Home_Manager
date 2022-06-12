@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- replace `personal` with {{user.name}} -->
+<h1>{{user.username}}'s Garden</h1>
+
+{% for plant in plants %}
+
+<div class="card">
+  <a href="{% url 'plants_detail' plant.id%}">
+    <div class="card-content">
+      <span class="card-title">{{ plant.name }}</span>
+      <p>Description: {{ plant.description }}</p>
+      <p>Toxicity: {{plant.toxicity}}</p>
+      <p>Light: {{plant.light}}</p>
+    </div>
+  </a>
+</div>
+{% endfor %} {% endblock %}

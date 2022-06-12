@@ -1,0 +1,216 @@
+{% load static %}
+
+<ul id="slide-out" class="sidenav invisible-top">
+  <li>
+    <div class="user-view">
+      <div class="background">
+        <img src="http://placekitten.com/300/300" />
+      </div>
+      <a href="#user">
+        <img class="circle" src="http://placekitten.com/200/300" />
+      </a>
+      <a href="#name">
+        <span class="white-text name">{{user.username}}</span>
+      </a>
+      <a href="#email">
+        <span class="white-text email">jdandturk@gmail.com</span>
+      </a>
+    </div>
+  </li>
+  {% comment %}
+  <li>
+    <a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a>
+  </li>
+  {% endcomment %}
+
+  <!-- Main Links -->
+  <li>
+    <a class="waves-effect" href="{% url 'home' %}">
+      <span class="material-icons vertical-align-middle">home</span>
+      Home
+    </a>
+  </li>
+
+  <li>
+    <a class="waves-effect" href="{% url 'about' %}">
+      <span class="material-icons vertical-align-middle">info</span>
+      About
+    </a>
+  </li>
+  {% if user.is_authenticated %}
+  <li>
+    <div class="divider divider-margin-0"></div>
+  </li>
+
+  <!-- Resources Section-->
+  <li>
+    <a class="subheader subheader-padding">Resources</a>
+  </li>
+
+  <!-- Chores Subsection -->
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">
+        <span class="material-icons vertical-align-middle">checklist</span>
+        Tasks
+        <i class="material-icons">arrow_drop_down</i>
+      </a>
+      <div class="collapsible-body">
+        <ul>
+          <li>
+            <a class="waves-effect" href="#!">
+              View Tasks
+            </a>
+          </li>
+          <li>
+            <a class="waves-effect" href="#!">
+              Add Task
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <li><div class="divider divider-margin-0"></div></li>
+
+  {% comment %}
+  <li><div class="divider divider-margin-0"></div></li>
+  {% endcomment %}
+  <!-- Plants Dropdown -->
+
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">
+        <span class="material-icons vertical-align-middle">grass</span>
+        Plants
+        <i class="material-icons">arrow_drop_down</i>
+      </a>
+      <div class="collapsible-body">
+        <ul>
+          <li>
+            <a class="waves-effect" href="{% url 'plants_index' %}">
+              View Plants
+            </a>
+          </li>
+          <li>
+            <a class="waves-effect" href="{% url 'plants_create' %}">
+              Add Plant
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+
+  <li>
+    <div class="divider divider-margin-0"></div>
+  </li>
+  <!-- Bills Subsection -->
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">
+        <span class="material-icons vertical-align-middle">payments</span>
+        Bills
+        <i class="material-icons">arrow_drop_down</i>
+      </a>
+      <div class="collapsible-body">
+        <ul>
+          <li>
+            <a class="waves-effect" href="#!">
+              View Bills
+            </a>
+          </li>
+          <li>
+            <a class="waves-effect" href="#!">
+              Add Bill
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <li>
+    <div class="divider divider-margin-0"></div>
+  </li>
+  <!-- Shopping Subsection -->
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">
+        <span class="material-icons vertical-align-middle">
+          shopping_basket
+        </span>
+        Shopping
+        <i class="material-icons">arrow_drop_down</i>
+      </a>
+      <div class="collapsible-body">
+        <ul>
+          <li>
+            <a class="waves-effect" href="#!">
+              View Shopping List
+            </a>
+          </li>
+          <li>
+            <a class="waves-effect" href="#!">
+              Add To Shopping List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <li>
+    <div class="divider divider-margin-0"></div>
+  </li>
+
+  <!-- Notes Subsection -->
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">
+        <span class="material-icons vertical-align-middle">description</span>
+        Notes
+        <i class="material-icons">arrow_drop_down</i>
+      </a>
+      <div class="collapsible-body">
+        <ul>
+          <li>
+            <a class="waves-effect" href="{% url 'notes_index' %}">
+              View Notes
+            </a>
+          </li>
+          <li>
+            <a class="waves-effect" href="{% url 'notes_create' %}">
+              Add Note
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+
+  <li>
+    <div class="divider divider-margin-0"></div>
+  </li>
+  <!-- Account Section -->
+  <li>
+    <a class="waves-effect" href="{% url 'logout' %}">
+      <span class="material-icons vertical-align-middle">logout</span>
+      Log Out
+    </a>
+  </li>
+  {% else %}
+  <li>
+    <a class="waves-effect" href="{% url 'login' %}">
+      <span class="material-icons vertical-align-middle">login</span>
+      Log In
+    </a>
+  </li>
+  <li>
+    <a class="waves-effect" href="{% url 'signup' %}">
+      <span class="material-icons vertical-align-middle">create</span>
+      Sign Up
+    </a>
+  </li>
+  {% endif %}
+</ul>
+
+<!-- User Links -->
