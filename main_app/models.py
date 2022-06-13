@@ -1,13 +1,12 @@
-from unicodedata import category
-from unittest import case
-from django.db import models
+from datetime import date, timedelta
+
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+from django.forms import Textarea
 from django.urls import reverse
 from django.utils import timezone
-from datetime import date, timedelta
-from django.contrib.auth.models import User
-from django.forms import Textarea
 
 # import pandas as pd
 
