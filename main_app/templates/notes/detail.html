@@ -1,10 +1,19 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Note Details</h1>
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ note.title }} </span>
-    <p>{{note.note}}</p>
-    <p>Created: {{note.created}} | Last update: {{note.updated}}</p>
+
+<a href="{% url 'notes_index' %}" class="back-btn">
+  <span class="material-icons"> arrow_back </span>
+</a>
+<div class="row">
+  <div class="card">
+    <p class="center updated">{{note.updated}}</p>
+    <div class="card-content main-content">
+      <span class="card-title">{{ note.title }} </span>
+      <p>{{note.note}}</p>
+    </div>
+    <div class="card-action">
+      <a href="{% url 'notes_update' note.id%}">Edit</a>
+      <a href="{% url 'notes_delete' note.id%}">Delete</a>
+    </div>
   </div>
 </div>
 {% endblock%}

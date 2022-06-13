@@ -32,4 +32,20 @@ footer.page-footer {
   padding: 0 !important;
 }
 
+.back-btn {
+  color: black;
+}
+.back-btn a{
+  font-size: 32px;
+}
+.back-btn span {
+  margin: 14px 0 7px 0;
+}
 
+.updated {
+  margin: 0;
+}
+
+.main-content {
+  padding-top: 7px !important ;
+}
