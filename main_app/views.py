@@ -174,10 +174,10 @@ class NoteDelete(LoginRequiredMixin, DeleteView):
 
 
 # ===== Tasks =====
-# @login_required
-# def tasks_index(request):
-#     tasks = Task.objects.filter(user=request.user)
-#     return render(request, "tasks/index.html", {"tasks": tasks})
+@login_required
+def tasks_index(request):
+    tasks = Task.objects.filter(user=request.user)
+    return render(request, "tasks/index.html", {"tasks": tasks})
 
 
 # def tasks_detail(request, task_id):
