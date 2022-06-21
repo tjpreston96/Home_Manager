@@ -26,10 +26,25 @@ footer.page-footer {
   text-align: right;
 }
 
-.vertical-align-middle {
-  line-height: normal;
-  display: inline;
-  vertical-align: middle;
+input.btn {
+  background-color: var(--main-accent);
+}
+
+.accent-text {
+  color: var(--main-accent);
+}
+
+.background {
+  background-color: var(--secondary-color);
+}
+
+.back-btn {
+  color: black;
+}
+
+.back-btn span {
+  margin: 21px 0 14px 0;
+  font-size: 28px;
 }
 
 .divider-margin-0 {
@@ -37,41 +52,20 @@ footer.page-footer {
   padding: 0 !important;
 }
 
-.back-btn {
-  color: black;
-}
-.back-btn a {
-  font-size: 32px;
-}
-.back-btn span {
-  margin: 14px 0 7px 0;
-}
-
-.updated {
-  margin: 0;
-}
-
 .main-content {
   padding-top: 7px !important ;
-}
-
-.background {
-  background-color: var(--secondary-color);
-}
-
-.accent-text {
-  color: var(--main-accent);
 }
 
 .secondary-accent {
   background-color: var(--secondary-accent);
 }
 
-input.btn {
-  background-color: var(--main-accent);
+.updated {
+  margin: 0;
 }
 
-.card-title,
-.card-content p {
-  color: black;
+.vertical-align-middle {
+  line-height: normal;
+  display: inline;
+  vertical-align: middle;
 }
