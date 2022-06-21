@@ -1,8 +1,9 @@
 :root {
-  --main-color: #091f36;
-  --secondary-color: #4f5f76;
-  --main-accent: #9e363a;
-  --secondary-accent: #0f2862;
+  --main-color: #1b2125;
+  --secondary-color: #2e151b;
+  --main-accent: #376e6f;
+  --secondary-accent: #da7b93;
+  --tertiary-accent: #1c3334;
 }
 
 body {
@@ -56,4 +57,16 @@ footer.page-footer {
 
 .background {
   background-color: var(--secondary-color);
+}
+
+.accent-text {
+  color: var(--main-accent);
+}
+
+.secondary-accent {
+  background-color: var(--secondary-accent);
+}
+
+input.btn {
+  background-color: var(--main-accent);
 }
