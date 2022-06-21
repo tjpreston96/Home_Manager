@@ -70,3 +70,8 @@ footer.page-footer {
 input.btn {
   background-color: var(--main-accent);
 }
+
+.card-title,
+.card-content p {
+  color: black;
+}
