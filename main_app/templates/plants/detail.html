@@ -1,4 +1,8 @@
 {% extends 'base.html' %}{% block content %}
+<!-- Back Button -->
+<a href="{% url 'plants_index' %}" class="back-btn">
+  <span class="material-icons"> arrow_back </span>
+</a>
 <h1 class="center">{{plant.name}}</h1>
 <div class="row">
   <!-- Details Section -->
