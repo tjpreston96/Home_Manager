@@ -1,8 +1,8 @@
 :root {
   --main-color: #1b2125;
   --secondary-color: #4a212b;
-  --main-accent: #376e6f;
-  --secondary-accent: #da7b93;
+  --main-accent: #00897b;
+  --secondary-accent: #e17892;
   --tertiary-accent: #1c3334;
 }
 
@@ -46,6 +46,10 @@ input.btn {
   margin: 21px 0 14px 0;
   font-size: 28px;
 }
+
+/* .card-action a{
+  color: var(--secondary-color) !important;
+} */
 
 .divider-margin-0 {
   margin: 0 !important;
