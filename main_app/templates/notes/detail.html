@@ -1,8 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-
+<!-- Back Button -->
 <a href="{% url 'notes_index' %}" class="back-btn">
   <span class="material-icons"> arrow_back </span>
 </a>
+
+<!-- Details Card -->
 <div class="row">
   <div class="card">
     <p class="center updated">{{note.updated}}</p>
