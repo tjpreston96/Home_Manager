@@ -1,11 +1,12 @@
 {% extends 'base.html' %}{% block content %}
-<h1>Plant Details</h1>
+<h1 class="center">{{plant.name}}</h1>
 <div class="row">
   <!-- Details Section -->
   <div class="col s12 m6">
+    <!-- Details Card -->
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{plant.name}}</span>
+        <span class="card-title">Plant Details</span>
         <p>Description: {{plant.description}}</p>
         <p>Light: {{plant.light}}</p>
         <p>Environment: {{plant.environment}}</p>
@@ -21,12 +22,15 @@
         <a href="{% url 'plants_delete' plant.id%}">Delete</a>
       </div>
     </div>
+
+    <!-- Plant Photo -->
     {% for photo in plant.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}" />
     {% empty %}
-    <div class="card-panel center-align">No Photos Uploaded</div>
+    <div class="card-panel center-align">No Photo Uploaded</div>
     {% endfor %}
 
+    <!-- Plant Photo Upload -->
     <form
       action="{% url 'add_photo' plant.id %}"
       enctype="multipart/form-data"
@@ -39,12 +43,14 @@
       <input type="submit" class="btn" value="Upload Photo" />
     </form>
   </div>
+
   <!-- Maintenance Section -->
   <div class="col s12 m6 l6">
     <form action="{% url 'add_maintenance' plant.id %}" method="POST">
-      {% csrf_token %} {{maintenance_form.as_p}}
+      {% csrf_token %} {{maintenance_form.as_table}}
       <input type="submit" class="btn" value="Add Maintenance" />
     </form>
+    <!-- Maintenance Panel (Plant.days_till)-->
     {% if plant.days_till > 2 %}
     <div class="card-panel">
       The {{plant.name}} is currently up to date. ({{plant.days_till}} days
@@ -57,6 +63,8 @@
     {% else %}
     <div class="card-panel">The {{plant.name}} might need maintenance.</div>
     {% endif %}
+
+    <!-- Previous Maintenance Table -->
     <table class="striped">
       <thead>
         <tr>
