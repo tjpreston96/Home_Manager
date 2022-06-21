@@ -5,9 +5,9 @@
 
 {% for plant in plants %}
 
-<div class="card">
+<div class="card hoverable">
   <a href="{% url 'plants_detail' plant.id%}">
-    <div class="card-content">
+    <div class="card-content black-text">
       <span class="card-title">{{ plant.name }}</span>
       <p>Description: {{ plant.description }}</p>
       <p>Toxicity: {{plant.toxicity}}</p>
