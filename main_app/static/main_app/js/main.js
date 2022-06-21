@@ -1,12 +1,13 @@
 $(document).ready(function () {
+  // sidenav
   $(".sidenav").sidenav();
-  // Initialize materialize data picker
+  // date picker
   $("#id_date").datepicker({
     format: "yyyy-mm-dd",
     defaultDate: new Date(),
     setDefaultDate: true,
   });
-  // other functions to make it collapsible
+  // collapsibles
   $(".collapsible").collapsible();
   $(".dropdown-trigger").dropdown();
 });
