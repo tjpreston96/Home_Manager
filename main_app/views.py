@@ -6,10 +6,10 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from .forms import MaintenanceForm, NoteForm
+from .forms import MaintenanceForm, ShoppingForm
 from .models import Bill, Note, Photo, Plant, Shopping, Task
 
 env = environ.Env()
@@ -146,6 +146,12 @@ def notes_detail(request, note_id):
 
 
 # If widget is needed
+# def create_note(request):
+#     note_form = NoteForm()
+#     return render(request, "plants/create.html", {"note_form": note_form})
+
+
+# @login_required
 # def add_note(request):
 #     form = NoteForm(request.POST)
 
@@ -224,10 +230,34 @@ def tasks_index(request):
 
 
 # ===== Shopping =====
-# @login_required
-# def shopping_index(request):
-#     shopping = Shopping.objects.filter(user=request.user)
-#     return render(request, "shopping/index.html", {"shopping": shopping})
+@login_required
+def shopping_index(request):
+    shopping = Shopping.objects.filter(user=request.user)
+    shopping_form = ShoppingForm()
+
+    return render(
+        request,
+        "shopping/index.html",
+        {"shopping_list": shopping, "shopping_form": shopping_form},
+    )
+
+
+@login_required
+def add_item(request):
+    form = ShoppingForm(request.POST)
+    form.instance.user = request.user
+
+    if form.is_valid():
+        form.save()
+        return redirect("shopping_index")
+
+
+def delete_item(request, shopping_id):
+    obj = get_object_or_404(Shopping, id=shopping_id)
+
+    if request.method == "POST":
+        obj.delete()
+        return redirect("shopping_index")
 
 
 # def shopping_detail(request, shopping_id):
@@ -241,7 +271,7 @@ def tasks_index(request):
 
 # class ShoppingCreate(LoginRequiredMixin, CreateView):
 #     model = Shopping
-#     fields = "__all__"
+#     fields = ["item"]
 #     readonly_fields = ["created"]
 
 #     def form_valid(self, form):
