@@ -1,5 +1,5 @@
-from django.forms import ModelForm, Textarea
-from .models import Maintenance, Note
+from django.forms import ModelForm, Textarea, TextInput
+from .models import Maintenance, Note, Shopping
 
 
 class MaintenanceForm(ModelForm):
@@ -8,14 +8,18 @@ class MaintenanceForm(ModelForm):
         fields = ["date", "nutrients"]
 
 
-class NoteForm(ModelForm):
+# class NoteForm(ModelForm):
+#     class Meta:
+#         model = Note
+#         fields = ["title", "note"]
+#         widgets = {
+#             "note": Textarea(attrs={"rows": 20}),
+#         }
+#         readonly_fields = ["updated", "timestamp"]
+
+
+class ShoppingForm(ModelForm):
     class Meta:
-        model = Note
-        widgets = {
-            "note": Textarea(attrs={"rows": 20}),
-        }
-        fields = "__all__"
-        readonly_fields = ["updated", "timestamp"]
-
-
-# attrs={"rows": 5, "cols": 20}
+        model = Shopping
+        fields = ["item"]
+        # widgets = {"item": TextInput(attrs={"class": "input-field"})}
