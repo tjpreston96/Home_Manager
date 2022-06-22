@@ -153,7 +153,7 @@ class Shopping(models.Model):
         return f"{self.item} added to list on {self.created}"
 
     class Meta:
-        ordering = ["-item"]
+        ordering = ["created"]
 
 
 # ======== Bills Model ========
