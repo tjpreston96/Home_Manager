@@ -1,3 +1,24 @@
 {% extends 'base.html' %}{% block content %}
+<h1 class="center">Shopping List</h1>
+<div class="card-panel col s12 m9 l6">
+  <form action="{% url 'add_item' %}" method="post" class="col s12 m9 l6">
+    {% csrf_token %} {{shopping_form.as_table}}
+    <input type="submit" class="btn btn-small" value="Add Item" />
+  </form>
+</div>
 
-{% endblock %}
+<div class="collection col s12 m9 l6">
+  {% for item in shopping_list %}
+  <li class="collection-item">
+    {{item.item}}
+    <span class="right">
+      <form action="{% url 'delete_item' item.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">X</button>
+      </form>
+    </span>
+  </li>
+  {% endfor %}
+</div>
+{% endblock %} {% comment %}
+<span class="material-icons vertical-align-middle">clear</span> {% endcomment %}
