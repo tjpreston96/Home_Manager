@@ -1,5 +1,14 @@
 {% extends 'base.html' %}{% block content %}
-<h1>About the Home Manager</h1>
+<!-- Messages -->
+<!-- 
+  {% if messages %} {% for message in messages %}
+<p {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+  {{ message }}
+</p>
+{% endfor %} {% endif %} 
+-->
+
+<h2 class='center'>About Home Manager</h2>
 <hr />
 <p>
   This is an application designed to ease task management around the house and
