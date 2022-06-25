@@ -113,11 +113,10 @@ def add_maintenance(request, plant_id):
 def add_photo(request, plant_id):
     photo_file = request.FILES.get("photo-file", None)
     if photo_file:
-        session = boto3.Session(profile_name="home_manager_app")
-        hm_s3_client = session.client("s3")
+        s3_client = boto3.client("s3")
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind(".") :]
         try:
-            hm_s3_client.upload_fileobj(photo_file, BUCKET, key)
+            s3_client.upload_fileobj(photo_file, BUCKET, key)
             url = f"https://{BUCKET}.s3.amazonaws.com/{key}"
             photo = Photo(url=url, plant_id=plant_id)
             photo.save()
