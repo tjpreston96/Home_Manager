@@ -71,11 +71,11 @@
   <!--    Dropdown Content      -->
   <ul id="tasks-dropdown" class="dropdown-content">
     <li>
-      <a href="#!">View Tasks</a>
+      <a href="{% url 'tasks_index' %}">View Tasks</a>
     </li>
-    <li>
-      <a href="#!">Add Task</a>
-    </li>
+    {% comment %} <li>
+      <a href="{% url 'tasks_index' %}">Add Task</a>
+    </li> {% endcomment %}
   </ul>
 
   <ul id="plants-dropdown" class="dropdown-content">
@@ -100,9 +100,9 @@
     <li>
       <a href="{% url 'shopping_index' %}">View Shopping List</a>
     </li>
-    <li>
+    {% comment %} <li>
       <a href="{% url 'shopping_index' %}">Add Item</a>
-    </li>
+    </li> {% endcomment %}
   </ul>
 
   <ul id="notes-dropdown" class="dropdown-content">
