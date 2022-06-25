@@ -11,8 +11,8 @@ urlpatterns = [
     path("accounts/signup/", views.signup, name="signup"),
     # ===== Tasks =====
     path("tasks/", views.tasks_index, name="tasks_index"),
-    # path("tasks/<int:task_id>/", views.tasks_detail),
-    # path("tasks/create/", views.TaskCreate.as_view(), name="tasks_create"),
+    path("tasks/create/", views.add_task, name="add_task"),
+    path("tasks/<int:task_id>/delete/", views.delete_task, name="delete_task"),
     # ===== Plants =====
     path("plants/", views.plants_index, name="plants_index"),
     path("plants/<int:plant_id>/", views.plants_detail, name="plants_detail"),
@@ -31,8 +31,8 @@ urlpatterns = [
     # path("bills/create/", views.BillCreate.as_view(), name="bills_create"),
     # ===== Shopping =====
     path("shopping/", views.shopping_index, name="shopping_index"),
-    path('shopping/create/', views.add_item, name='add_item'),
-    path('shopping/<int:shopping_id>/delete/', views.delete_item, name='delete_item'),
+    path("shopping/create/", views.add_item, name="add_item"),
+    path("shopping/<int:shopping_id>/delete/", views.delete_item, name="delete_item"),
     # path("shopping/create/", views.ShoppingCreate.as_view(), name="shopping_create"),
     # ===== Notes =====
     path("notes/", views.notes_index, name="notes_index"),
