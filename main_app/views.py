@@ -146,21 +146,6 @@ def notes_detail(request, note_id):
         return redirect("notes_index")
 
 
-# If widget is needed
-# def create_note(request):
-#     note_form = NoteForm()
-#     return render(request, "plants/create.html", {"note_form": note_form})
-
-
-# @login_required
-# def add_note(request):
-#     form = NoteForm(request.POST)
-
-#     if form.is_valid():
-#         form.save(commit=True)
-#     return redirect("notes_index")
-
-
 class NoteCreate(LoginRequiredMixin, CreateView):
     model = Note
     fields = ["title", "note"]
@@ -262,22 +247,3 @@ def delete_item(request, shopping_id):
     if request.method == "POST":
         obj.delete()
         return redirect("shopping_index")
-
-
-# def shopping_detail(request, shopping_id):
-#     shopping = Shopping.objects.get(id=shopping_id)
-#     return render(
-#         request,
-#         "shopping/detail.html",
-#         {"shopping": shopping},
-#     )
-
-
-# class ShoppingCreate(LoginRequiredMixin, CreateView):
-#     model = Shopping
-#     fields = ["item"]
-#     readonly_fields = ["created"]
-
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super().form_valid(form)
