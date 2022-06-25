@@ -1,6 +1,6 @@
 :root {
   --main-color: #1b2125;
-  --secondary-color: #4a212b;
+  --secondary-color: #8c2030;
   --main-accent: #00897b;
   --secondary-accent: #e17892;
   --tertiary-accent: #1c3334;
@@ -20,13 +20,17 @@ nav {
   background-color: var(--main-color);
 }
 
+h2 {
+  margin: 20px 0;
+}
+
 footer.page-footer {
   background-color: var(--main-color);
   padding-top: 0;
   text-align: right;
 }
 
-input.btn {
+.btn {
   background-color: var(--main-accent);
 }
 
@@ -47,7 +51,6 @@ input.btn {
   font-size: 28px;
 }
 
-
 .divider-margin-0 {
   margin: 0 !important;
   padding: 0 !important;
@@ -57,10 +60,16 @@ input.btn {
   padding-top: 7px !important ;
 }
 
-
-
 .secondary-accent {
   background-color: var(--secondary-accent);
+}
+
+.shop-card {
+  padding: 7px;
+}
+
+.shop-del-btn {
+  background-color: var(--secondary-color);
 }
 
 .updated {
