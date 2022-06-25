@@ -1,12 +1,12 @@
 {% extends 'base.html' %}{% block content %}
-<h1>Confirm Delete</h1>
+<h2 class="center">Confirm Delete</h2>
 
-<h4>
+<h4 class="center">
   Are you sure you want to delete
   <span class="accent-text">{{object.title}}</span>?
 </h4>
 
-<form action="" method="POST">
+<form action="" method="POST" class="center">
   {% csrf_token %}
   <input type="submit" value="Yes - Delete!" class="btn" />
   <a href="{% url 'notes_detail' note.id %}" class="btn secondary-accent"
