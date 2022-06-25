@@ -2,6 +2,7 @@ import uuid
 
 import boto3
 import environ
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -9,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from .forms import MaintenanceForm, ShoppingForm
+from .forms import MaintenanceForm, ShoppingForm, TaskForm
 from .models import Bill, Note, Photo, Plant, Shopping, Task
 
 env = environ.Env()
@@ -32,7 +33,7 @@ def about(request):
 
 # ===== Accounts =====
 def signup(request):
-    error_message = ""
+
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -40,10 +41,10 @@ def signup(request):
             login(request, user)
             return redirect("about")
         else:
-            error_message = "Invalid sign up - try again"
+            messages.error(request, "Invalid Sign Up - Please Try Again.", "red-text")
+
     form = UserCreationForm()
-    context = {"form": form, "error_message": error_message}
-    return render(request, "registration/signup.html", context)
+    return render(request, "registration/signup.html", {"form": form})
 
 
 # ===== Plants =====
@@ -183,25 +184,28 @@ class NoteDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def tasks_index(request):
     tasks = Task.objects.filter(user=request.user)
-    return render(request, "tasks/index.html", {"tasks": tasks})
+    task_form = TaskForm()
+    return render(
+        request, "tasks/index.html", {"task_list": tasks, "task_form": task_form}
+    )
 
 
-# def tasks_detail(request, task_id):
-#     tasks = Task.objects.get(id=task_id)
-#     return render(
-#         request,
-#         "tasks/detail.html",
-#         {"tasks": tasks},
-#     )
+@login_required
+def add_task(request):
+    form = TaskForm(request.POST)
+    form.instance.user = request.user
+
+    if form.is_valid():
+        form.save()
+        return redirect("tasks_index")
 
 
-# class TaskCreate(LoginRequiredMixin, CreateView):
-#     model = Task
-#     fields = ["task", "details"]
+def delete_task(request, task_id):
+    obj = get_object_or_404(Task, id=task_id)
 
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super().form_valid(form)
+    if request.method == "POST":
+        obj.delete()
+        return redirect("tasks_index")
 
 
 # ===== Bills =====
