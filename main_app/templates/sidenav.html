@@ -35,7 +35,7 @@
     <div class="divider divider-margin-0"></div>
   </li>
 
-  <!-- Chores Subsection -->
+  <!-- Tasks Subsection -->
   <ul class="collapsible collapsible-accordion">
     <li>
       <a class="collapsible-header">
@@ -46,11 +46,15 @@
       <div class="collapsible-body">
         <ul>
           <li>
-            <a class="waves-effect" href="#!"> View Tasks </a>
+            <a class="waves-effect" href="{% url 'tasks_index' %}">
+              View Tasks
+            </a>
           </li>
+          {% comment %}
           <li>
             <a class="waves-effect" href="#!"> Add Task </a>
           </li>
+          {% endcomment %}
         </ul>
       </div>
     </li>
@@ -60,7 +64,6 @@
   </li>
 
   <!-- Plants Dropdown -->
-
   <ul class="collapsible collapsible-accordion">
     <li>
       <a class="collapsible-header">
@@ -88,6 +91,7 @@
   <li>
     <div class="divider divider-margin-0"></div>
   </li>
+
   <!-- Bills Subsection -->
   <ul class="collapsible collapsible-accordion">
     <li>
@@ -111,6 +115,7 @@
   <li>
     <div class="divider divider-margin-0"></div>
   </li>
+
   <!-- Shopping Subsection -->
   <ul class="collapsible collapsible-accordion">
     <li>
@@ -124,11 +129,17 @@
       <div class="collapsible-body">
         <ul>
           <li>
-            <a class="waves-effect" href="{% url 'shopping_index' %}"> View Shopping List </a>
+            <a class="waves-effect" href="{% url 'shopping_index' %}">
+              View Shopping List
+            </a>
           </li>
+          {% comment %}
           <li>
-            <a class="waves-effect" href="{% url 'shopping_index' %}"> Add To Shopping List </a>
+            <a class="waves-effect" href="{% url 'shopping_index' %}">
+              Add To Shopping List
+            </a>
           </li>
+          {% endcomment %}
         </ul>
       </div>
     </li>
@@ -165,7 +176,8 @@
   <li>
     <div class="divider divider-margin-0"></div>
   </li>
-  <!-- Account Section -->
+
+  <!-- Accounts Section -->
   <li>
     <a class="waves-effect" href="{% url 'logout' %}">
       <span class="material-icons vertical-align-middle">logout</span>
