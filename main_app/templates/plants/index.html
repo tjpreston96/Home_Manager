@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 <!-- replace `personal` with {{user.name}} -->
-<h1>{{user.username}}'s Garden</h1>
+<h2 class="center">{{user.username}}'s Garden</h2>
 
 {% for plant in plants %}
 
@@ -15,4 +15,5 @@
     </div>
   </a>
 </div>
-{% endfor %} {% endblock %}
+{% empty %} There are currently 0 plants in the garden. {% endfor %} 
+{% endblock%}
