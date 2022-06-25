@@ -1,3 +1,32 @@
 {% extends 'base.html' %}{% block content %}
-<h1>Task List</h1>
+<!-- Title -->
+<h2 class="center">Task List</h2>
+
+<!-- Add Task Form -->
+<div class="card-panel col s12 m9 l6">
+  <form action="{% url 'add_task' %}" method="post" class="col s12 m9 l6">
+    {% csrf_token %} {{task_form.as_table}}
+    <input type="submit" class="btn btn-small" value="Add Item" />
+  </form>
+</div>
+
+<!-- Task List -->
+<div class="col s12 m9 l6">
+  <ul class="collection">
+    {% for task in task_list %}
+
+    <li class="collection-item">
+      {{task.task}}
+      <span class="right secondary-content">
+        <form action="{% url 'delete_task' task.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit">X</button>
+        </form>
+      </span>
+    </li>
+    {%empty%}
+    <h4 class="center">There are no current tasks.</h4>
+    {% endfor %}
+  </ul>
+</div>
 {% endblock %}
