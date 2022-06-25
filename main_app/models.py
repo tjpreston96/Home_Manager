@@ -110,7 +110,6 @@ class Maintenance(models.Model):
 class Task(models.Model):
     # category = models.CharField(max_length=100) <-- maybe?
     task = models.CharField(max_length=100)
-    details = models.TextField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -122,7 +121,7 @@ class Task(models.Model):
         return reverse("tasks_detail", kwargs={"task_id": self.id})
 
     class Meta:
-        ordering = ["-updated"]
+        ordering = ["created"]
 
 
 # ======== Notes Model ========
@@ -150,7 +149,7 @@ class Shopping(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.item} added to list on {self.created}"
+        return f"{self.item} added to {self.user}'s list on {self.created}"
 
     class Meta:
         ordering = ["created"]
