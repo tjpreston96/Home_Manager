@@ -1,1 +1,41 @@
-{% extends 'base.html' %} {% block content %} {% endblock %}
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<h2 class="center">Welcome Back!</h1>
+{% else %}
+<h2 class="center">Hello Friend!</h2>
+<h2 class="center">Welcome to Home Manager!</h2>
+{% endif %}
+
+<div class="row">
+  <div class="col s4">
+    <div class="center promo promo-example">
+      <i class="material-icons">event_repeat</i>
+      <p class="promo-caption">Organize Tasks</p>
+      <p class="light center">
+        We did most of the heavy lifting for you to provide a default stylings
+        that incorporate our custom components.
+      </p>
+    </div>
+  </div>
+  <div class="col s4">
+    <div class="center promo promo-example">
+      <i class="material-icons">flash_on</i>
+      <p class="promo-caption">Increase Productivity</p>
+      <p class="light center">
+        We did most of the heavy lifting for you to provide a default stylings
+        that incorporate our custom components.
+      </p>
+    </div>
+  </div>
+  <div class="col s4">
+    <div class="center promo promo-example">
+      <i class="material-icons">add_reaction</i>
+      <p class="promo-caption">Decrease Stress</p>
+      <p class="light center">
+        We did most of the heavy lifting for you to provide a default stylings
+        that incorporate our custom components.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
