@@ -33,12 +33,12 @@
         </a>
       </li>
 
-      <li>
+      {% comment %} <li>
         <a class="dropdown-trigger" href="#!" data-target="bills-dropdown">
           Bills
           <i class="material-icons right">arrow_drop_down</i>
         </a>
-      </li>
+      </li> {% endcomment %}
 
       <li>
         <a class="dropdown-trigger" href="#!" data-target="shopping-dropdown">
@@ -73,9 +73,11 @@
     <li>
       <a href="{% url 'tasks_index' %}">View Tasks</a>
     </li>
-    {% comment %} <li>
+    {% comment %}
+    <li>
       <a href="{% url 'tasks_index' %}">Add Task</a>
-    </li> {% endcomment %}
+    </li>
+    {% endcomment %}
   </ul>
 
   <ul id="plants-dropdown" class="dropdown-content">
@@ -100,9 +102,11 @@
     <li>
       <a href="{% url 'shopping_index' %}">View Shopping List</a>
     </li>
-    {% comment %} <li>
+    {% comment %}
+    <li>
       <a href="{% url 'shopping_index' %}">Add Item</a>
-    </li> {% endcomment %}
+    </li>
+    {% endcomment %}
   </ul>
 
   <ul id="notes-dropdown" class="dropdown-content">
