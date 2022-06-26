@@ -25,9 +25,10 @@ class PlantTestCase(TestCase):
             user=self.user,
         )
 
-    def test_PlantsCreate(self):
+    def test_create_plant(self):
         plant = self.create_plant()
-
+        
+        self.assertEqual(len(Plant.objects.all()), 1)
         self.assertEqual(plant.name, "Silver Satin Pothos")
         self.assertEqual(plant.description, "Dark leaves with silver spots; Resilient")
         self.assertEqual(plant.light, "Low")
@@ -35,5 +36,3 @@ class PlantTestCase(TestCase):
         self.assertEqual(plant.environment, "Indoor")
         self.assertEqual(plant.watering_frequency, 21)
         self.assertEqual(plant.user.id, 1)
-
-    
