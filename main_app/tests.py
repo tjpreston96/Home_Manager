@@ -1,5 +1,6 @@
 from django.test import Client, RequestFactory, TestCase
 
+from .forms import MaintenanceForm
 from .models import Plant, User
 from .views import *
 
@@ -23,5 +24,16 @@ class PlantTestCase(TestCase):
             watering_frequency=21,
             user=self.user,
         )
+
+    def test_PlantsCreate(self):
+        plant = self.create_plant()
+
+        self.assertEqual(plant.name, "Silver Satin Pothos")
+        self.assertEqual(plant.description, "Dark leaves with silver spots; Resilient")
+        self.assertEqual(plant.light, "Low")
+        self.assertEqual(plant.toxicity, 1)
+        self.assertEqual(plant.environment, "Indoor")
+        self.assertEqual(plant.watering_frequency, 21)
+        self.assertEqual(plant.user.id, 1)
 
     
