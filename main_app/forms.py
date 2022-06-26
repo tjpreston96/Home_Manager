@@ -1,5 +1,5 @@
-from django.forms import ModelForm, Textarea, TextInput
-from .models import Maintenance, Note, Shopping, Task
+from django.forms import ModelForm
+from .models import Maintenance, Shopping, Task
 
 
 class MaintenanceForm(ModelForm):
@@ -22,7 +22,6 @@ class ShoppingForm(ModelForm):
     class Meta:
         model = Shopping
         fields = ["item"]
-        # widgets = {"item": TextInput(attrs={"class": "input-field"})}
 
 
 class TaskForm(ModelForm):

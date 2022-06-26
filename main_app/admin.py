@@ -10,4 +10,3 @@ admin.site.register(Photo)
 admin.site.register(Plant)
 admin.site.register(Shopping)
 admin.site.register(Task)
-
