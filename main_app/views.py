@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from .forms import MaintenanceForm, ShoppingForm, TaskForm
-from .models import Bill, Note, Photo, Plant, Shopping, Task
+from .models import Note, Photo, Plant, Shopping, Task
 
 env = environ.Env()
 environ.Env.read_env()
@@ -114,7 +114,7 @@ def add_photo(request, plant_id):
     photo_file = request.FILES.get("photo-file", None)
     if photo_file:
         s3_client = boto3.client("s3")
-        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind(".") :]
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind("."):]
         try:
             s3_client.upload_fileobj(photo_file, BUCKET, key)
             url = f"https://{BUCKET}.s3.amazonaws.com/{key}"
@@ -169,9 +169,8 @@ class NoteDelete(LoginRequiredMixin, DeleteView):
 def tasks_index(request):
     tasks = Task.objects.filter(user=request.user)
     task_form = TaskForm()
-    return render(
-        request, "tasks/index.html", {"task_list": tasks, "task_form": task_form}
-    )
+    context = {"task_list": tasks, "task_form": task_form}
+    return render(request, "tasks/index.html", context)
 
 
 @login_required
